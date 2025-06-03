@@ -14,6 +14,9 @@ public class BaseClient {
     }
 
     protected RequestSpecification getSpecWithAuth(String token) {
+        if (token == null) {
+            return getSpec(); // без заголовка Authorization
+        }
         return getSpec().header("Authorization", token);
     }
 }
